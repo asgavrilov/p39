@@ -27,10 +27,10 @@ public class UrlController {
     @PostMapping("/urls")
     @ApiOperation(
             value = "Get plain text from html by provided url",
-            notes = "Returns a product as per the id")
+            notes = "Returns plain text as per the url")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved"),
-            @ApiResponse(code = 404, message = "Not found - The url was incorrect")
+            @ApiResponse(code = 401, message = "Not found - The url was incorrect or null")
     })
     public List<UrlResultDto> getUrlText(@RequestBody List<UrlDto> urlDto) {
         List<UrlResultDto> resultDtos = urlService.getTextFromUrls(urlDto);
