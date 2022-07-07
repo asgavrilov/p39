@@ -2,7 +2,7 @@ package com.peer39.service.impl;
 
 import com.peer39.dto.UrlDto;
 import com.peer39.dto.UrlResultDto;
-import com.peer39.service.DownloaderService;
+import com.peer39.service.DownloaderConverterService;
 import com.peer39.service.UrlService;
 import com.peer39.service.WebpageStorage;
 import lombok.extern.log4j.Log4j2;
@@ -16,16 +16,29 @@ import java.util.List;
 public class UrlServiceImpl implements UrlService {
 
     @Autowired
-    DownloaderService downloaderService;
-
-    @Autowired
     WebpageStorage webpageStorage;
 
+    @Autowired
+    DownloaderConverterService downloaderConverterService;
+
     @Override
-    public List<UrlResultDto> getTextFromUrl(List<UrlDto> urls) {
-
-
-
-        return null;
+    public List<UrlResultDto> getTextFromUrls(List<UrlDto> urls) {
+        return urls.stream().map(this::getTextFromUrl).toList();
     }
+
+    private UrlResultDto getTextFromUrl(UrlDto urlDto) {
+        String inputUrl = urlDto.getInputUrl();
+        String htmlToText;
+        try {
+            htmlToText = downloaderConverterService.download(inputUrl);
+
+        } catch (Exception e) {
+            log.error("Error occurred during downloading url {}", inputUrl);
+            return new UrlResultDto(inputUrl, "Error occurred during downloading url");
+        }
+        log.info("Getting text from HTML body for url {}", inputUrl);
+        return new UrlResultDto(inputUrl, htmlToText);
+    }
+
+
 }
