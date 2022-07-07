@@ -2,6 +2,7 @@ package com.peer39.service.impl;
 
 import com.peer39.dto.UrlDto;
 import com.peer39.dto.UrlResultDto;
+import com.peer39.exceptions.UrlDownloadException;
 import com.peer39.service.DownloaderConverterService;
 import com.peer39.service.UrlService;
 import com.peer39.service.WebpageStorage;
@@ -34,7 +35,7 @@ public class UrlServiceImpl implements UrlService {
 
         } catch (Exception e) {
             log.error("Error occurred during downloading url {}", inputUrl);
-            return new UrlResultDto(inputUrl, "Error occurred during downloading url");
+            throw new UrlDownloadException(inputUrl);
         }
         log.info("Getting text from HTML body for url {}", inputUrl);
         return new UrlResultDto(inputUrl, htmlToText);
