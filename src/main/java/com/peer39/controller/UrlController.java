@@ -38,8 +38,6 @@ public class UrlController {
         log.info("getting text from website body for {} urls", urlDto.size());
         return resultDtos;
     }
-
-
     @ApiOperation(
             value = "Get website(s) categories based on provided url(s)",
             notes = "Returns list of categories as per provided url(s)")
