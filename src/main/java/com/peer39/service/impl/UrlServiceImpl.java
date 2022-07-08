@@ -5,7 +5,7 @@ import com.peer39.dto.UrlResultDto;
 import com.peer39.exceptions.UrlDownloadException;
 import com.peer39.service.DownloaderConverterService;
 import com.peer39.service.UrlService;
-import com.peer39.service.WebpageStorage;
+import com.peer39.service.WebpageDataStorage;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UrlServiceImpl implements UrlService {
 
     @Autowired
-    WebpageStorage webpageStorage;
+    WebpageDataStorage webpageDataStorage;
 
     @Autowired
     DownloaderConverterService downloaderConverterService;
@@ -40,6 +40,4 @@ public class UrlServiceImpl implements UrlService {
         log.info("Getting text from HTML body for url {}", inputUrl);
         return new UrlResultDto(inputUrl, htmlToText);
     }
-
-
 }

@@ -22,7 +22,9 @@ public class Category {
         }
         return false;
     }
-    public void addKeywords(Set<Keyword> keywords) {keywords.stream().forEach(this::addKeyword);}
+    public void addKeywords(Set<Keyword> keywords) {
+        keywords.forEach(this::addKeyword);
+    }
 
     @Override
     public boolean equals(Object o) {

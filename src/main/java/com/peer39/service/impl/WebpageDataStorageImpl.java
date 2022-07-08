@@ -1,13 +1,13 @@
 package com.peer39.service.impl;
 
-import com.peer39.service.WebpageStorage;
+import com.peer39.service.WebpageDataStorage;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class WebpageStorageImpl implements WebpageStorage {
+public class WebpageDataStorageImpl implements WebpageDataStorage {
 
     private Map<String, String> htmlMap = new HashMap<>();
 //    private Map<String, Webpage> webpageMap = new HashMap<>();

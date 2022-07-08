@@ -20,7 +20,8 @@ public class InitConfig {
     @PostConstruct
     void init() {
         Category starWars = new Category("Star Wars");
-        starWars.addKeywords(Set.of(new Keyword[]{
+        starWars.addKeywords(Set.of(
+                new Keyword[]{
                 new Keyword("star war"),
                 new Keyword("starwars"),
                 new Keyword("starwar"),
@@ -40,6 +41,6 @@ public class InitConfig {
 
         categoryStorage.addCategory(starWars);
         categoryStorage.addCategory(basketball);
-        log.debug("created {} categories", categoryStorage.getCategories().size());
+        log.info("{} categories have been created", categoryStorage.getCategories().size());
     }
 }

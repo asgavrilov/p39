@@ -1,6 +1,6 @@
 package com.peer39.service;
 
-public interface WebpageStorage {
+public interface WebpageDataStorage {
 
     String addWebpageHtml(String url, String html);
     String getWebpageHtml(String url);

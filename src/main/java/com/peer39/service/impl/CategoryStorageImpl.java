@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class CategoriesStorageImpl implements CategoryStorage {
+public class CategoryStorageImpl implements CategoryStorage {
 
     private final Set<Category> categories = new HashSet<>();
 

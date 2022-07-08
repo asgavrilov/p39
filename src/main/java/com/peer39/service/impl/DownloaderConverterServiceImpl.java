@@ -1,7 +1,7 @@
 package com.peer39.service.impl;
 
-import com.peer39.helpers.SSLHelper;
 import com.peer39.service.DownloaderConverterService;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ public class DownloaderConverterServiceImpl implements DownloaderConverterServic
 
     @Override
     public String download(String url) throws IOException {
-             return SSLHelper
-                     .getConnection(url)
+             return Jsoup.connect(url)
                      .followRedirects(followRedirects)
                      .referrer(url)
                      .get()
+                     .body()
                      .text();
     }
 }
