@@ -1,5 +1,6 @@
 package com.peer39.controller;
 
+import com.peer39.dto.ParsedWebDataCategoriesDto;
 import com.peer39.dto.UrlDto;
 import com.peer39.dto.UrlResultDto;
 import com.peer39.service.UrlService;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.peer39.configuration.ApiConstants.REST_SERVICE_URL;
+import static com.peer39.configuration.ApiConstants.*;
 
 @RestController
 @CrossOrigin
@@ -24,7 +25,7 @@ public class UrlController {
     @Autowired
     private UrlService urlService;
 
-    @PostMapping("/urls")
+    @PostMapping(URLS)
     @ApiOperation(
             value = "Get plain text from html by provided url",
             notes = "Returns plain text as per the url")
@@ -34,7 +35,22 @@ public class UrlController {
     })
     public List<UrlResultDto> getUrlText(@RequestBody List<UrlDto> urlDto) {
         List<UrlResultDto> resultDtos = urlService.getTextFromUrls(urlDto);
-        log.info("getting text from webpage body for {} urls", urlDto.size());
+        log.info("getting text from website body for {} urls", urlDto.size());
         return resultDtos;
+    }
+
+
+    @ApiOperation(
+            value = "Get website(s) categories based on provided url(s)",
+            notes = "Returns list of categories as per provided url(s)")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved"),
+            @ApiResponse(code = 401, message = "Not found - The url was incorrect or null")
+    })
+    @PostMapping(value = PARSED_WEBDATA_CATEGORIES)
+    public List<ParsedWebDataCategoriesDto> getParsedWebDataCategories(@RequestBody List<UrlDto> urlDto) {
+        List<ParsedWebDataCategoriesDto> parsedWebDataCategoriesDto = urlService.getListParsedWebDataCategories(urlDto);
+        log.info("getting categories for parsed websites {}", urlDto.toString());
+        return parsedWebDataCategoriesDto;
     }
 }

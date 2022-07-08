@@ -3,8 +3,8 @@ package com.peer39.configuration;
 import com.peer39.entities.Category;
 import com.peer39.entities.Keyword;
 import com.peer39.service.CategoryStorage;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -12,10 +12,10 @@ import java.util.Set;
 
 @Log4j2
 @Component
+@AllArgsConstructor
 public class InitConfig {
 
-    @Autowired
-    CategoryStorage categoryStorage;
+    private CategoryStorage categoryStorage;
 
     @PostConstruct
     void init() {
@@ -30,7 +30,8 @@ public class InitConfig {
         }));
 
         Category basketball = new Category("Basketball");
-        basketball.addKeywords(Set.of(new Keyword[]{
+        basketball.addKeywords(Set.of(
+                new Keyword[]{
                 new Keyword("basketball"),
                 new Keyword("nba"),
                 new Keyword("ncaa"),
@@ -39,8 +40,17 @@ public class InitConfig {
                 new Keyword("anthony davis")
         }));
 
+        Category news = new Category("Boris Johnson");
+        news.addKeywords(Set.of(
+                new Keyword[]{
+                new Keyword("johnson"),
+                new Keyword("war"),
+                new Keyword("uk")
+        }));
+
         categoryStorage.addCategory(starWars);
         categoryStorage.addCategory(basketball);
-        log.info("{} categories have been created", categoryStorage.getCategories().size());
+        categoryStorage.addCategory(news);
+        log.debug("{} categories have been created", categoryStorage.getCategories().size());
     }
 }

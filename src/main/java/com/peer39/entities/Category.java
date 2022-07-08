@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Getter
 public class Category {
-    private String categoryName;
+    private final String categoryName;
     @Setter
     private Set<Keyword> keywords = new HashSet<>();
 
@@ -16,11 +16,8 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public boolean addKeyword(Keyword keyword) {
-        if(!keywords.contains(keyword)) {
-            return keywords.add(keyword);
-        }
-        return false;
+    public void addKeyword(Keyword keyword) {
+        keywords.add(keyword);
     }
     public void addKeywords(Set<Keyword> keywords) {
         keywords.forEach(this::addKeyword);
