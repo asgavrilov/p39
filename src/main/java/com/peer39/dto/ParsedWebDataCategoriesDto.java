@@ -10,6 +10,6 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 public class ParsedWebDataCategoriesDto {
-    String inputUrl;
+    String url;
     Set<String> categories;
 }
