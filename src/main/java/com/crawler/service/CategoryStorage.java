@@ -1,6 +1,6 @@
-package com.peer39.service;
+package com.crawler.service;
 
-import com.peer39.entities.Category;
+import com.crawler.entities.Category;
 
 import java.util.Set;
 

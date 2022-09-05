@@ -1,13 +1,13 @@
-package com.peer39;
+package com.crawler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Peer39GradleApplication {
+public class WebCrawlerGradleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Peer39GradleApplication.class, args);
+        SpringApplication.run(WebCrawlerGradleApplication.class, args);
     }
 
 }

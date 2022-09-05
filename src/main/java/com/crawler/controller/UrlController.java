@@ -1,31 +1,30 @@
-package com.peer39.controller;
+package com.crawler.controller;
 
-import com.peer39.dto.ParsedWebDataCategoriesDto;
-import com.peer39.dto.UrlDto;
-import com.peer39.dto.UrlResultDto;
-import com.peer39.service.UrlService;
+import com.crawler.configuration.ApiConstants;
+import com.crawler.dto.ParsedWebDataCategoriesDto;
+import com.crawler.dto.UrlResultDto;
+import com.crawler.dto.UrlDto;
+import com.crawler.service.UrlService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.peer39.configuration.ApiConstants.*;
-
 @RestController
 @CrossOrigin
-@RequestMapping(value = REST_SERVICE_URL)
+@RequestMapping(value = ApiConstants.REST_SERVICE_URL)
 @Slf4j
 @ApiOperation("URL Processor API")
+@AllArgsConstructor
 public class UrlController {
 
-    @Autowired
-    private UrlService urlService;
+    private final UrlService urlService;
 
-    @PostMapping(URLS)
+    @PostMapping(ApiConstants.URLS)
     @ApiOperation(
             value = "Get plain text from html by provided url",
             notes = "Returns plain text as per the url")
@@ -45,7 +44,7 @@ public class UrlController {
             @ApiResponse(code = 200, message = "Successfully retrieved"),
             @ApiResponse(code = 401, message = "Not found - The url was incorrect or null")
     })
-    @PostMapping(value = PARSED_WEBDATA_CATEGORIES)
+    @PostMapping(value = ApiConstants.PARSED_WEBDATA_CATEGORIES)
     public List<ParsedWebDataCategoriesDto> getParsedWebDataCategories(@RequestBody List<UrlDto> urlDto) {
         List<ParsedWebDataCategoriesDto> parsedWebDataCategoriesDto = urlService.getListParsedWebDataCategories(urlDto);
         log.info("getting categories for parsed websites {}", urlDto.toString());

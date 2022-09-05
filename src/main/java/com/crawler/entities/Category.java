@@ -1,4 +1,4 @@
-package com.peer39.entities;
+package com.crawler.entities;
 
 import lombok.Getter;
 import lombok.Setter;

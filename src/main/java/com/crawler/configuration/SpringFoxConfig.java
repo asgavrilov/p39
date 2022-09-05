@@ -1,4 +1,4 @@
-package com.peer39.configuration;
+package com.crawler.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,13 +1,15 @@
-package com.peer39.dto;
+package com.crawler.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-public class UrlResultDto {
-    public String url;
-    public String textResult;
+public class ParsedWebDataCategoriesDto {
+    String url;
+    Set<String> categories;
 }

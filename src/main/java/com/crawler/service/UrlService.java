@@ -1,8 +1,8 @@
-package com.peer39.service;
+package com.crawler.service;
 
-import com.peer39.dto.ParsedWebDataCategoriesDto;
-import com.peer39.dto.UrlDto;
-import com.peer39.dto.UrlResultDto;
+import com.crawler.dto.ParsedWebDataCategoriesDto;
+import com.crawler.dto.UrlDto;
+import com.crawler.dto.UrlResultDto;
 
 import java.util.List;
 
