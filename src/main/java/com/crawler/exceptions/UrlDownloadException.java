@@ -1,4 +1,4 @@
-package com.peer39.exceptions;
+package com.crawler.exceptions;
 
 public class UrlDownloadException extends RuntimeException {
     public UrlDownloadException(String url) {

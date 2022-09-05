@@ -1,4 +1,4 @@
-package com.peer39.exceptions;
+package com.crawler.exceptions;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

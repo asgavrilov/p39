@@ -1,4 +1,4 @@
-package com.peer39.configuration;
+package com.crawler.configuration;
 
 public interface ApiConstants {
     String URLS = "/urls";

@@ -1,8 +1,8 @@
-package com.peer39.service.impl;
+package com.crawler.service.impl;
 
 
-import com.peer39.entities.Category;
-import com.peer39.service.CategoryStorage;
+import com.crawler.entities.Category;
+import com.crawler.service.CategoryStorage;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 

@@ -1,13 +1,13 @@
-package com.peer39.service.impl;
+package com.crawler.service.impl;
 
-import com.peer39.dto.ParsedWebDataCategoriesDto;
-import com.peer39.dto.UrlDto;
-import com.peer39.dto.UrlResultDto;
-import com.peer39.entities.Category;
-import com.peer39.exceptions.UrlDownloadException;
-import com.peer39.service.CategoryStorage;
-import com.peer39.service.ConverterService;
-import com.peer39.service.UrlService;
+import com.crawler.dto.ParsedWebDataCategoriesDto;
+import com.crawler.dto.UrlResultDto;
+import com.crawler.dto.UrlDto;
+import com.crawler.entities.Category;
+import com.crawler.exceptions.UrlDownloadException;
+import com.crawler.service.CategoryStorage;
+import com.crawler.service.ConverterService;
+import com.crawler.service.UrlService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -70,7 +70,7 @@ public class UrlServiceImpl implements UrlService {
     private boolean matchCategory(Category category, String text) {
         AtomicBoolean res = new AtomicBoolean(false);
         category.getKeywords().forEach(el -> {
-            if (text.contains(el.getKeyword().toLowerCase(Locale.ROOT))) {
+            if (text.contains(el.getKeywordValue().toLowerCase(Locale.ROOT))) {
                 res.set(true);
             }
         });

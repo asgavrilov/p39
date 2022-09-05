@@ -1,8 +1,8 @@
-package com.peer39.configuration;
+package com.crawler.configuration;
 
-import com.peer39.entities.Category;
-import com.peer39.entities.Keyword;
-import com.peer39.service.CategoryStorage;
+import com.crawler.entities.Category;
+import com.crawler.entities.Keyword;
+import com.crawler.service.CategoryStorage;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
